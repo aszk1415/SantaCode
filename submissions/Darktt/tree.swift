@@ -24,13 +24,13 @@ func seed() -> (Int) -> Seed
         Seed(height: $0)
     }
 }
-let leafs: Array<String> = "🍏🍎🍐🍊🍋🍓🍈🍑🥭🫑".map(String.init)
 
 func watering() -> (Seed) -> String
 {
     {
         seed in
         
+        let emojiLeaves: Array<String> = "🍏🍎🍐🍊🍋🍓🍈🍑🥭🫑".map(String.init)
         let result = (0 ..< seed.height).map {
             
             layer in
@@ -43,7 +43,7 @@ func watering() -> (Seed) -> String
                     return "🌟"
                 }
                 
-                return leafs.randomElement() ?? "🍏"
+                return emojiLeaves.randomElement() ?? "🍏"
             }
             let leaves: String = (0 ..< (layer + 1)).map { _ in leave(layer) }.joined()
             
@@ -63,7 +63,7 @@ func grow() -> (String) -> Void
         var result: String = plant + "\n" + String(repeating: " ", count: count) + "🟫"
         
         if count >= 3 {
-
+            
             result += "\n" + String(repeating: " ", count: count - 2) + "🟫🟫🟫"
         }
         
